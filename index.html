@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Example with DHTML and XMLHttpRequest</title>
+    <script>
+        function getServerTime() {
+            // Create an XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Specify what should happen when the response is ready
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Update the content of the result area without reloading the page
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+
+            // Open a GET request to the server script
+            xhr.open("GET", "server-time.php", true);
+            // Send the request
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Get Current Server Time</h1>
+    <button onclick="getServerTime()">Get Server Time</button>
+    <div id="result" style="margin-top: 20px;">
+        <!-- The result from the server will be displayed here -->
+    </div>
+</body>
+</html>
